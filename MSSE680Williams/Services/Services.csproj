@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4A8B0FA5-ABC5-4FFC-BACA-2DB140E2FBCA}</ProjectGuid>
+    <ProjectGuid>{8F07BC18-5A15-4915-84ED-5D325D25F0C7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DAL</RootNamespace>
-    <AssemblyName>DAL</AssemblyName>
+    <RootNamespace>Services</RootNamespace>
+    <AssemblyName>Services</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,58 +35,22 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <EntityDeploy Include="andy680.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>andy680.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="andy680.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>andy680.edmx</DependentUpon>
-      <LastGenOutput>andy680.Context.cs</LastGenOutput>
-    </None>
-    <None Include="andy680.edmx.diagram">
-      <DependentUpon>andy680.edmx</DependentUpon>
-    </None>
-    <None Include="andy680.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>andy680.edmx</DependentUpon>
-      <LastGenOutput>andy680.cs</LastGenOutput>
-    </None>
+    <Compile Include="UserNotFoundException.cs" />
     <None Include="App.config" />
+    <Compile Include="RepositoryFactory.cs" />
+    <Compile Include="UserSvcImpl.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="andy680.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>andy680.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="andy680.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>andy680.tt</DependentUpon>
-    </Compile>
-    <Compile Include="andy680.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>andy680.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Message.cs">
-      <DependentUpon>andy680.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MessageMethods.cs" />
-    <Compile Include="Organization.cs">
-      <DependentUpon>andy680.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OrganizationMethods.cs" />
-    <Compile Include="Repository.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>andy680.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>andy680.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserMethods.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="IMessageService.cs" />
+    <Compile Include="IOrganizationService.cs" />
+    <Compile Include="IService.cs" />
+    <Compile Include="IUserService.cs" />
+    <Compile Include="MessageNotFoundException.cs" />
+    <Compile Include="MessageSvcImpl.cs" />
+    <Compile Include="OrganizationNotFoundException.cs" />
+    <Compile Include="OrganizationSvcImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -94,18 +58,13 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SqlScripts\createdatabase.sql" />
+    <ProjectReference Include="..\MSSE680Williams\DAL.csproj">
+      <Project>{4A8B0FA5-ABC5-4FFC-BACA-2DB140E2FBCA}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
