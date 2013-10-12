@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MSSE680Williams
+namespace DAL
 {
     using System;
     using System.Data.Entity;
