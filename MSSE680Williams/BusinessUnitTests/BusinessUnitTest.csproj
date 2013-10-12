@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{97001D2A-C175-40C1-9E36-A4BC024296AE}</ProjectGuid>
+    <ProjectGuid>{9215764C-81E4-42E1-9290-858898CEF5E7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ServicesUnitTest</RootNamespace>
-    <AssemblyName>ServicesUnitTest</AssemblyName>
+    <RootNamespace>BusinessUnitTests</RootNamespace>
+    <AssemblyName>BusinessUnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,13 +50,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="MessageServiceTests.cs" />
+    <Compile Include="AuthenticateUserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="OrganizationServiceTests.cs" />
-    <Compile Include="RepositoryFactoryTests.cs" />
-    <Compile Include="UserServiceTests.cs" />
+    <Compile Include="MessageManagerTests.cs" />
+    <Compile Include="OrganizationManagerTests.cs" />
+    <Compile Include="UserManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{46105326-9092-45DD-AC12-9EC60CE692C6}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MSSE680Williams\DAL.csproj">
       <Project>{4A8B0FA5-ABC5-4FFC-BACA-2DB140E2FBCA}</Project>
       <Name>DAL</Name>
