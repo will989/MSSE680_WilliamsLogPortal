@@ -36,9 +36,10 @@ namespace Presentation
             //system prompted to change my if/else to this format and it seems to work fine
             //if a value has been selected from the drop-down, use it, otherwise use what is entered
             //in the text box
-            message.SendingOrgId = Convert.ToInt32(ListBox1.SelectedValue != null ? this.ListBox1.Text : this.SendingOrgId.Text);
+            message.SendingOrgId = Convert.ToInt32(ListBox1.SelectedValue); //!= null ? this.ListBox1.Text : this.SendingOrgId.Text);
+            message.ReceivingOrgId = Convert.ToInt32(ListBox2.SelectedValue); //!= null ? this.ListBox2.Text : this.ReceivingOrgId.Text);
 
-            message.ReceivingOrgId = Convert.ToInt32(this.ReceivingOrgId.Text);
+            //message.ReceivingOrgId = Convert.ToInt32(this.ReceivingOrgId.Text);
             message.Severity = Convert.ToInt32(this.Severity.Text);
             message.OrgMessage = this.Message.Text;
 

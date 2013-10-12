@@ -27,6 +27,27 @@ namespace Business
             }
         }
 
+        public List<User> GetAllUsers()
+        {
+            //use factory to get service implementations
+            var userSvc = Factory.GetUserSvc();
+            List<User> userList = new List<User>();
+
+
+            try
+            {
+                var userRepo = new DataRepository<User>();
+                userList = userRepo.GetAll().ToList<User>();
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Exception caught while getting list of users" + e);
+            }
+
+            return userList;
+        }
+
         public User GetUser(int userId)
         {
 

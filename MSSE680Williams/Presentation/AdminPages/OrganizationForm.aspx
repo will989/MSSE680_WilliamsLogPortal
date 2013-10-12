@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OrganizationForm.aspx.cs" Inherits="Presentation.OrganizationForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OrganizationForm.aspx.cs" Inherits="Presentation.AdminPages.OrganizationForm" %>
 
 <!DOCTYPE html>
 
@@ -54,11 +54,7 @@
 
     
                 <br />
-                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DataObjectTypeName="DAL.Organization" DeleteMethod="DeleteOrganization" InsertMethod="AddOrganization" SelectMethod="GetOrganization" TypeName="Services.OrganizationSvcImpl" UpdateMethod="UpdateOrganization">
-                    <SelectParameters>
-                        <asp:Parameter Name="id" Type="Int32" />
-                    </SelectParameters>
-                </asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DataObjectTypeName="DAL.Organization" DeleteMethod="DeleteOrganization" InsertMethod="AddOrganization" SelectMethod="GetAllOrganizations" TypeName="Business.OrganizationManager" UpdateMethod="UpdateOrganization"></asp:ObjectDataSource>
                 <br />
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1">
                     <Columns>

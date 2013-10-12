@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Presentation {
+namespace Presentation.AdminPages {
     
     
     public partial class UserForm {

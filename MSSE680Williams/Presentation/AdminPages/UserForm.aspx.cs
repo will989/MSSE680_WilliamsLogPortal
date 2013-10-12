@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Business;
 using DAL;
 
-namespace Presentation
+namespace Presentation.AdminPages
 {
     public partial class UserForm : System.Web.UI.Page
     {

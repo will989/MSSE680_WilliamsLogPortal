@@ -5,12 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
         <title>Manage Messages</title>
-        <style type="text/css">
-            .auto-style1 {
-                height: 26px;
-            }
-        </style>
-    </head>
+        </head>
     <body>
         <form id="form1" runat="server">
             <div>
@@ -25,8 +20,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Sending Organization Id<asp:TextBox ID="SendingOrgId" runat="server"></asp:TextBox>
-                        </td>
+                        <td>Sending Organization Id</td>
                     </tr>
                     <tr>
                         <td> <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:andy680ConnectionString %>" SelectCommand="SELECT [OrganizationId], [Name] FROM [Organizations]"></asp:SqlDataSource>
@@ -35,7 +29,7 @@
                         </td>
                     </tr>   
                     <tr>
-                        <td>Receiving Organization Id<asp:TextBox ID="ReceivingOrgId" runat="server" ></asp:TextBox></td>
+                        <td>Receiving Organization Id</td>
                     </tr>
                     <tr>
                         <td>
@@ -83,7 +77,7 @@
                     <asp:BoundField DataField="OrgMessage" HeaderText="OrgMessage" SortExpression="OrgMessage" />
                 </Columns>
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:andy680ConnectionString %>" SelectCommand="SELECT [MessageId], [CorrelationIdentifier], [SendingOrgId], [ReceivingOrgId], [Severity], [Timestamp], [OrgMessage] FROM [Messages]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" DataSourceMode="DataSet" ConnectionString="<%$ ConnectionStrings:andy680ConnectionString %>" SelectCommand="SELECT [MessageId], [CorrelationIdentifier], [SendingOrgId], [ReceivingOrgId], [Severity], [Timestamp], [OrgMessage] FROM [Messages]"></asp:SqlDataSource>
 
         </form>
     </body>

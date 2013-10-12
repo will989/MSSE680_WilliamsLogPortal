@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserForm.aspx.cs" Inherits="Presentation.UserForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserForm.aspx.cs" Inherits="Presentation.AdminPages.UserForm" %>
 
 <!DOCTYPE html>
 
@@ -65,14 +65,12 @@
                 <br />
                 
                 List of users:<br />
-                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DataObjectTypeName="DAL.User" InsertMethod="AddUser" SelectMethod="GetUser" TypeName="Business.UserManager" UpdateMethod="UpdateUser">
-                    <SelectParameters>
-                        <asp:Parameter Name="userId" Type="Int32" />
-                    </SelectParameters>
+
+                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DataObjectTypeName="DAL.User" InsertMethod="AddUser" SelectMethod="GetAllUsers" TypeName="Business.UserManager" UpdateMethod="UpdateUser" DeleteMethod="DeleteUser">
                 </asp:ObjectDataSource>
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1">
                     <Columns>
-                        <asp:CommandField ShowEditButton="True" />
+                        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                         <asp:BoundField DataField="UserId" HeaderText="UserId" SortExpression="UserId" />
                         <asp:BoundField DataField="UserName" HeaderText="UserName" SortExpression="UserName" />
                         <asp:BoundField DataField="Password" HeaderText="Password" SortExpression="Password" />
