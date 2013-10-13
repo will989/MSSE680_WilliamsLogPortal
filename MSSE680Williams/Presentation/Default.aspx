@@ -22,6 +22,9 @@
             <p>
                 <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/AdminPages/OrganizationForm.aspx">OrganizationForm</asp:HyperLink>
             </p>
+            <p>
+                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/MessageForm.aspx">MessageForm</asp:HyperLink>
+            </p>
         </form>
     </body>
 </html>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DAL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Services;
 
 namespace DALUnitTest
 {
@@ -71,7 +72,7 @@ namespace DALUnitTest
 
             DateTime current = System.DateTime.Now;
             User user = new User();
-            user.UserName = "Repository";
+            user.UserName = Randomizer.RandomString(12);
             user.Password = "testing";
             user.OrganizationId = 1;
             user.FirstName = "Repository";
@@ -101,7 +102,7 @@ namespace DALUnitTest
         {
             var userRepository = new DataRepository<User>();
             User user = new User();
-            user.UserName = "Repository";
+            user.UserName = Randomizer.RandomString(12);
             user.Password = "testing";
             user.OrganizationId = 1;
             user.FirstName = "Repository";

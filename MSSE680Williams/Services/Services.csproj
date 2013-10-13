@@ -35,6 +35,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Randomizer.cs" />
     <Compile Include="UserNotFoundException.cs" />
     <None Include="App.config" />
     <Compile Include="RepositoryFactory.cs" />

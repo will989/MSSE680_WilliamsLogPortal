@@ -2,6 +2,7 @@
 using DAL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
+using Services;
 
 namespace DALUnitTest
 {
@@ -15,7 +16,8 @@ namespace DALUnitTest
 
             User user = new User();
             //user.UserId = 1; - this is auto-assigned by db
-            user.UserName = "test";
+            //generate a random username
+            user.UserName = Randomizer.RandomString(12);
             user.Password = "testing";
             user.OrganizationId = 1;
             user.FirstName = "Test";

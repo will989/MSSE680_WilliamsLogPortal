@@ -70,6 +70,10 @@
       <Project>{4A8B0FA5-ABC5-4FFC-BACA-2DB140E2FBCA}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{8f07bc18-5a15-4915-84ed-5d325d25f0c7}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

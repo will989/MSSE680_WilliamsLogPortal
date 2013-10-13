@@ -19,7 +19,7 @@ namespace ServicesUnitTest
             var factory = new Factory();
             DateTime current = System.DateTime.Now;
             User user = new User();
-            user.UserName = "userSvcImpl";
+            user.UserName = Randomizer.RandomString(12);
             user.Password = "testing";
             user.OrganizationId = 1;
             user.FirstName = "Service";
