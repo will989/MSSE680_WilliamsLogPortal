@@ -79,7 +79,7 @@ namespace Business
 
             try
             {
-                correlatedMessages = messageSvc.GetOrganizationMessages(correlationId);
+                correlatedMessages = messageSvc.GetCorrelatedMessages(correlationId);
             }
             catch (Exception e)
             {

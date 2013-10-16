@@ -11,6 +11,8 @@ namespace Presentation
 {
     public partial class MessageForm : System.Web.UI.Page
     {
+
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             Label1.Text = "";
@@ -58,6 +60,24 @@ namespace Presentation
 
         }
 
+
+    //With Select enabled in the GridView save the selected correlationId
+        //NOTE - arguments changed from EventArgs to GridViewSelectEventArgs
+        //per http://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.selectedindexchanged.aspx
+        protected void GridView1_SelectedIndexChanging(Object sender, GridViewSelectEventArgs e)
+        {
+            // Get the currently selected row using the SelectedRow property.
+            GridViewRow row = GridView1.Rows[e.NewSelectedIndex];
+
+           
+            // With the Select column enabled, the third column (index 2) contains
+            // the correlation id.
+            //SelectedIndexChangingLabel.Text = "You selected " + row.Cells[2].Text + ".";
+            int correlationId = Convert.ToInt32(row.Cells[2].Text);
+            Session["Correlation"] = correlationId;
+            Response.Redirect("CorrelatedMessages.aspx");
+
+        }
 
         /* Some different things I tinkered with to transfer info to another page:
          

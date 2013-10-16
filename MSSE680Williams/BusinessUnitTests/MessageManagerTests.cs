@@ -1,6 +1,7 @@
 ﻿//needed to add MSSE680_WilliamsLogMgmtPortal as a Reference
 //under ServicesUnitTest
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Business;
 using DAL;
@@ -67,6 +68,17 @@ namespace BusinessUnitTests
 
             Assert.IsTrue(message.SendingOrgId == 1);
 
+        }
+
+        //retrieves an organization from the database using the repository
+        [TestMethod()]
+        public void RetrieveMessagesByCorrelationId()
+        {
+            var messageManager = new MessageManager();
+
+            List<Message> myList = messageManager.GetCorrelatedMessages(9876);
+            System.Diagnostics.Debug.WriteLine("The lists's size is {0}", myList.Count);
+            Assert.IsTrue(myList.Count > 0);
         }
     }
 }

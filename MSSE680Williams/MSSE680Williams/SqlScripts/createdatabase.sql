@@ -205,4 +205,6 @@ GO
 /*running the unit tests after these inserts should work*/
 insert into Organizations values ('TestOrg', 'Testing St', 'Anytown', 'CO', '80000', '2013-09-14 06:30:00.000', '2099-09-14 06:30:00.000');
 insert into Users values ('Seed', 'testing', 'Seed', 'User', 1, 0, '2013-09-14 00:00:00.000', '2099-09-14 00:00:00.000');
+insert into Messages values (9876, 1, 1, 2, 'Correlation test message', '2013-09-14 06:30:00.000');
+
 GO

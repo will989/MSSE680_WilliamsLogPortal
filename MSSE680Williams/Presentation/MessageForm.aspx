@@ -79,8 +79,10 @@
             </p>
             <p>
                 List of Messages:</p>
-            <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="ObjectDataSource2">
+            <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="ObjectDataSource2" onselectedindexchanging="GridView1_SelectedIndexChanging"
+>
                 <Columns>
+                    <asp:CommandField ShowSelectButton="True" />
                     <asp:BoundField DataField="MessageId" HeaderText="MessageId" SortExpression="MessageId" />
                     <asp:BoundField DataField="CorrelationIdentifier" HeaderText="CorrelationIdentifier" SortExpression="CorrelationIdentifier" />
                     <asp:BoundField DataField="SendingOrgId" HeaderText="SendingOrgId" SortExpression="SendingOrgId" />
@@ -91,6 +93,8 @@
                 </Columns>
             </asp:GridView>
 
+            <br />
+            <br />
             <br />
             <br />
             View Messages for a single Organization:<br />

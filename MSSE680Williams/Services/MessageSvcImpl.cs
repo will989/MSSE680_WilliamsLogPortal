@@ -93,7 +93,7 @@ namespace Services
             //use the factory to create a new repository
             var messageRepository = RepositoryFactory.Create("Message");
             var msgRepo = new DataRepository<Message>();
-            List<Message> myMsgs = msgRepo.GetBySpecificKey("CorrelationId", correlationId).ToList<Message>();
+            List<Message> myMsgs = msgRepo.GetBySpecificKey("CorrelationIdentifier", correlationId).ToList<Message>();
 
             //List<Message> myMsgsMessages = messageRepository.GetBySpecificKey("CorrelationId", correlationId).ToList<Message>(); 
             return myMsgs;

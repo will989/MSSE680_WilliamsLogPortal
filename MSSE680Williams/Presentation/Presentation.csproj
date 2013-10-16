@@ -59,6 +59,7 @@
   <ItemGroup>
     <Content Include="AdminPages\OrganizationForm.aspx" />
     <Content Include="AdminPages\UserForm.aspx" />
+    <Content Include="CorrelatedMessages.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MessageForm.aspx" />
@@ -79,6 +80,13 @@
     </Compile>
     <Compile Include="AdminPages\UserForm.aspx.designer.cs">
       <DependentUpon>UserForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CorrelatedMessages.aspx.cs">
+      <DependentUpon>CorrelatedMessages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CorrelatedMessages.aspx.designer.cs">
+      <DependentUpon>CorrelatedMessages.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
