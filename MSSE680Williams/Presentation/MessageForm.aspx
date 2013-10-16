@@ -23,8 +23,8 @@
                         <td>Sending Organization Id</td>
                     </tr>
                     <tr>
-                        <td> <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:andy680ConnectionString %>" SelectCommand="SELECT [OrganizationId], [Name] FROM [Organizations]"></asp:SqlDataSource>
-                            <asp:ListBox ID="ListBox1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="OrganizationId"></asp:ListBox>
+                        <td> 
+                            <asp:ListBox ID="ListBox1" runat="server" DataSourceID="ObjectDataSource1" DataTextField="Name" DataValueField="OrganizationId"></asp:ListBox>
                 
                         </td>
                     </tr>   
@@ -33,7 +33,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:ListBox ID="ListBox2" runat="server" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="OrganizationId"></asp:ListBox>   
+                            <asp:ListBox ID="ListBox2" runat="server" DataSourceID="ObjectDataSource1" DataTextField="Name" DataValueField="OrganizationId"></asp:ListBox>   
                         </td>
                     </tr>
                     <tr>
@@ -51,6 +51,9 @@
                     </tr>
            
 
+                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetAllOrganizations" TypeName="Business.OrganizationManager"></asp:ObjectDataSource>
+           
+
                 </table>
         
                 <br/>
@@ -63,21 +66,21 @@
                 <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
             </p>
             <p>
-                &nbsp;</p>
+                <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="GetAllMessages" TypeName="Business.MessageManager"></asp:ObjectDataSource>
+            </p>
             <p>
                 List of Messages:</p>
-            <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="MessageId" DataSourceID="SqlDataSource2">
+            <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="ObjectDataSource2">
                 <Columns>
-                    <asp:BoundField DataField="MessageId" HeaderText="MessageId" InsertVisible="False" ReadOnly="True" SortExpression="MessageId" />
+                    <asp:BoundField DataField="MessageId" HeaderText="MessageId" SortExpression="MessageId" />
                     <asp:BoundField DataField="CorrelationIdentifier" HeaderText="CorrelationIdentifier" SortExpression="CorrelationIdentifier" />
                     <asp:BoundField DataField="SendingOrgId" HeaderText="SendingOrgId" SortExpression="SendingOrgId" />
                     <asp:BoundField DataField="ReceivingOrgId" HeaderText="ReceivingOrgId" SortExpression="ReceivingOrgId" />
                     <asp:BoundField DataField="Severity" HeaderText="Severity" SortExpression="Severity" />
-                    <asp:BoundField DataField="Timestamp" HeaderText="Timestamp" SortExpression="Timestamp" />
                     <asp:BoundField DataField="OrgMessage" HeaderText="OrgMessage" SortExpression="OrgMessage" />
+                    <asp:BoundField DataField="Timestamp" HeaderText="Timestamp" SortExpression="Timestamp" />
                 </Columns>
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" DataSourceMode="DataSet" ConnectionString="<%$ ConnectionStrings:andy680ConnectionString %>" SelectCommand="SELECT [MessageId], [CorrelationIdentifier], [SendingOrgId], [ReceivingOrgId], [Severity], [Timestamp], [OrgMessage] FROM [Messages]"></asp:SqlDataSource>
 
         </form>
     </body>

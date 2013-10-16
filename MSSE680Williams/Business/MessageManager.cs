@@ -86,6 +86,27 @@ namespace Business
 
             return correlatedMessages;
         }
+
+        public List<Message> GetAllMessages()
+        {
+            //use factory to get service implementations
+            var messageSvc = Factory.GetMessageSvc();
+            List<Message> msgList = new List<Message>();
+
+
+            try
+            {
+                var msgRepo = new DataRepository<Message>();
+                msgList = msgRepo.GetAll().ToList<Message>();
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Exception caught while getting list of messages" + e);
+            }
+
+            return msgList;
+        }
     }
 }
 

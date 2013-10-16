@@ -29,8 +29,8 @@
                     </tr>
                     <tr>
                         <td>Organization</td>
-                        <td> <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:andy680ConnectionString %>" SelectCommand="SELECT [OrganizationId], [Name] FROM [Organizations]"></asp:SqlDataSource>
-                            <asp:ListBox ID="ListBox1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="OrganizationId"></asp:ListBox>
+                        <td> 
+                            <asp:ListBox ID="ListBox1" runat="server" DataSourceID="ObjectDataSource1" DataTextField="Name" DataValueField="OrganizationId"></asp:ListBox>
                 
                         </td>
                     </tr>
@@ -66,20 +66,18 @@
                 
                 List of users:<br />
 
-                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DataObjectTypeName="DAL.User" InsertMethod="AddUser" SelectMethod="GetAllUsers" TypeName="Business.UserManager" UpdateMethod="UpdateUser" DeleteMethod="DeleteUser">
+                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetAllOrganizations" TypeName="Business.OrganizationManager">
                 </asp:ObjectDataSource>
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1">
                     <Columns>
-                        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-                        <asp:BoundField DataField="UserId" HeaderText="UserId" SortExpression="UserId" />
-                        <asp:BoundField DataField="UserName" HeaderText="UserName" SortExpression="UserName" />
-                        <asp:BoundField DataField="Password" HeaderText="Password" SortExpression="Password" />
-                        <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
-                        <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
                         <asp:BoundField DataField="OrganizationId" HeaderText="OrganizationId" SortExpression="OrganizationId" />
-                        <asp:CheckBoxField DataField="AdminFlag" HeaderText="AdminFlag" SortExpression="AdminFlag" />
-                        <asp:BoundField DataField="ActiveDate" HeaderText="ActiveDate" SortExpression="ActiveDate" />
-                        <asp:BoundField DataField="InactiveDate" HeaderText="InactiveDate" SortExpression="InactiveDate" />
+                        <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                        <asp:BoundField DataField="Street" HeaderText="Street" SortExpression="Street" />
+                        <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" />
+                        <asp:BoundField DataField="State" HeaderText="State" SortExpression="State" />
+                        <asp:BoundField DataField="Zip" HeaderText="Zip" SortExpression="Zip" />
+                        <asp:BoundField DataField="StartDate" HeaderText="StartDate" SortExpression="StartDate" />
+                        <asp:BoundField DataField="EndDate" HeaderText="EndDate" SortExpression="EndDate" />
                     </Columns>
                 </asp:GridView>
                 <br />

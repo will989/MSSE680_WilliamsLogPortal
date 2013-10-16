@@ -31,5 +31,7 @@ namespace DAL
             if (Timestamp != message.Timestamp) return false;
             return true;
         }//end equals
+
+        public virtual ICollection<Message> Messages { get; set; }
     }
 }
