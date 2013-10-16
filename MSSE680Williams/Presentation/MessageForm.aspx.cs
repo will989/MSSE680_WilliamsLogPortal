@@ -14,6 +14,7 @@ namespace Presentation
         protected void Page_Load(object sender, EventArgs e)
         {
             Label1.Text = "";
+            Label2.Text = "User's org id is:" + Convert.ToInt32(Session["usersOrgId"]);
         }
 
         //adding for debug purposes - should show value of listbox
@@ -56,5 +57,34 @@ namespace Presentation
             }
 
         }
+
+
+        /* Some different things I tinkered with to transfer info to another page:
+         
+        //try passing info in a Session State http://msdn.microsoft.com/en-us/library/6ad7zeeb%28v=vs.90%29.aspx
+        //but probably better to just pass the userId or orgId instead of a list
+        protected void Button2_Click(Object sender, EventArgs e)
+        {
+
+            //get the orgId and put it into the Session:
+            int orgId = Convert.ToInt32(ListBox3.SelectedValue);
+            Session["orgId"] = orgId;
+            var mm = new MessageManager();
+            List<Message> orgMessages = mm.GetOrganizationMessages(orgId);
+            Session["OrgMessages"] = orgMessages;
+            Server.Transfer("OrganizationMessages.aspx", true);
+
+        }
+
+   
+        //trying to pass value based on this article: http://msdn.microsoft.com/en-us/library/6c3yckfw%28v=vs.90%29.aspx
+        public int SelectedOrg
+        {
+            get
+            {
+                return Convert.ToInt32(ListBox3.SelectedValue);
+            }
+        }
+        */
     }
 }

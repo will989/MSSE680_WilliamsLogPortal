@@ -72,6 +72,30 @@ namespace Business
             return user;
         }
 
+        public User GetUser(string userName)
+        {
+
+            User user = new User();
+
+            try
+            {
+                //user factory to get service implementations
+                var userSvc = Factory.GetUserSvc();
+                user = userSvc.GetUser(userName);
+            }
+            catch (UserNotFoundException unfe)
+            {
+                Debug.WriteLine("User with that id was not found" + unfe);
+                throw new UserNotFoundException("User with that id was not found" + unfe);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Exception caught while getting user" + e);
+            }
+
+            return user;
+        }
+
         public void UpdateUser(User user)
         {
 

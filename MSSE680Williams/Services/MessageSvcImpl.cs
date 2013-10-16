@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using DAL;
 
@@ -79,7 +81,7 @@ namespace Services
             //use the factory to create a new repository
             var messageRepository = RepositoryFactory.Create("Message");
             var msgRepo = new DataRepository<Message>();
-            List<Message> myMsgs = msgRepo.GetBySpecificKey("OrganizationId", organizationId).ToList<Message>();
+            List<Message> myMsgs = msgRepo.GetBySpecificKey("SendingOrgId", organizationId).ToList<Message>();
 
             //List<Message> orgMessages = messageRepository.GetBySpecificKey("OrganizationId", organizationId).ToList<Message>(); 
             return myMsgs;

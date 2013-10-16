@@ -5,6 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
         <title>Manage Messages</title>
+        <style type="text/css">
+            .auto-style1 {
+                height: 19px;
+                width: 516px;
+            }
+            .auto-style2 {
+                width: 516px;
+            }
+        </style>
         </head>
     <body>
         <form id="form1" runat="server">
@@ -82,6 +91,34 @@
                 </Columns>
             </asp:GridView>
 
+            <br />
+            <br />
+            View Messages for a single Organization:<br />
+            <br />
+        
+                <table style="height: 278px; width: 524px">
+                    <tr>
+                        <td class="auto-style1"> 
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style2">
+                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="OrganizationMessages.aspx">View User's Organization Messages</asp:HyperLink>
+                        </td>
+                    </tr>   
+                    <tr>
+                        <td class="auto-style2">
+                            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style2">
+                            &nbsp;</td>
+                    </tr>
+           
+
+                </table>
+        
         </form>
     </body>
 </html>

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -87,7 +89,7 @@ namespace Business
             return correlatedMessages;
         }
 
-        public List<Message> GetAllMessages()
+        public static List<Message> GetAllMessages()
         {
             //use factory to get service implementations
             var messageSvc = Factory.GetMessageSvc();
@@ -107,6 +109,43 @@ namespace Business
 
             return msgList;
         }
+/*
+    // To support basic filtering, the messages cannot 
+    // be returned as an array of objects, rather as a  
+    // DataSet of the raw data values.  
+    public static DataSet GetAllMessagesAsDataSet () {
+      
+        foreach (var allMessage in (ICollection)GetAllMessages())
+        {
+            
+        }
+
+      var ds = new DataSet("Table");
+
+      // Create the schema of the DataTable.
+      DataTable dt = new DataTable();
+      DataColumn dc;
+      dc = new DataColumn("EmpID",   typeof(int));    dt.Columns.Add(dc);
+      dc = new DataColumn("FullName",typeof(string)); dt.Columns.Add(dc);
+      dc = new DataColumn("Address", typeof(string)); dt.Columns.Add(dc);
+
+      // Add rows to the DataTable.
+      DataRow row;
+
+      foreach (NorthwindEmployee ne in employees) {                
+        row = dt.NewRow();
+        row["EmpID"]    = ne.EmpID;
+        row["FullName"] = ne.FullName;
+        row["Address"]  = ne.Address;
+        dt.Rows.Add(row);
+      } 
+      // Add the complete DataTable to the DataSet.
+      ds.Tables.Add(dt);
+
+      return ds;
+    }  
+ */
+  }
     }
-}
+
 
