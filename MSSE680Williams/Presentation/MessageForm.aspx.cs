@@ -106,5 +106,15 @@ namespace Presentation
             }
         }
         */
+
+        protected void ObjectDataSource1_Filtering(object sender, ObjectDataSourceFilteringEventArgs e)
+        {
+            if (Textbox1.Text == "")
+            {
+                e.ParameterValues.Clear();
+                e.ParameterValues.Add("Severity", "1");
+            }
+        }
+
     }
 }

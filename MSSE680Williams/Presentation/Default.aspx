@@ -11,6 +11,9 @@
             <div class="auto-style1">
                 <h1>Log Management Portal Home Page</h1>
             </div>
+            
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/logo.jpg" />
+
             <div>
                 <asp:Label ID="lblMessage" runat="server" Font-Bold="True" Font-Size="Large"></asp:Label><br />
                 <br />

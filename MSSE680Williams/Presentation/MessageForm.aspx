@@ -123,6 +123,28 @@
 
                 </table>
         
+            <p>
+                Filter Messages by Severity:</p>
+            <p>
+                <br/>
+                <asp:textbox id="Textbox1" runat="server" text="1" />
+                <br/>
+
+                <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" SelectMethod="GetAllMessages" TypeName="Business.MessageManager" 
+                    filterexpression="Severity='{0}'" OnFiltering="ObjectDataSource1_Filtering"></asp:ObjectDataSource>
+            </p>
+            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource3">
+                <Columns>
+                    <asp:BoundField DataField="MessageId" HeaderText="MessageId" SortExpression="MessageId" />
+                    <asp:BoundField DataField="CorrelationIdentifier" HeaderText="CorrelationIdentifier" SortExpression="CorrelationIdentifier" />
+                    <asp:BoundField DataField="SendingOrgId" HeaderText="SendingOrgId" SortExpression="SendingOrgId" />
+                    <asp:BoundField DataField="ReceivingOrgId" HeaderText="ReceivingOrgId" SortExpression="ReceivingOrgId" />
+                    <asp:BoundField DataField="Severity" HeaderText="Severity" SortExpression="Severity" />
+                    <asp:BoundField DataField="OrgMessage" HeaderText="OrgMessage" SortExpression="OrgMessage" />
+                    <asp:BoundField DataField="Timestamp" HeaderText="Timestamp" SortExpression="Timestamp" />
+                </Columns>
+            </asp:GridView>
+        
         </form>
     </body>
 </html>

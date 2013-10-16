@@ -111,7 +111,8 @@ namespace Business
         }
 /*
     // To support basic filtering, the messages cannot 
-    // be returned as an array of objects, rather as a  
+    // be returned as an array of objects, they need to be
+    // returned as a  
     // DataSet of the raw data values.  
     public static DataSet GetAllMessagesAsDataSet () {
       

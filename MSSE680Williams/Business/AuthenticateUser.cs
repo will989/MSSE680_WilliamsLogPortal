@@ -46,7 +46,7 @@ namespace Business
             catch (UserNotFoundException unfe)
             {
                 Debug.WriteLine("Caught UserNotFoundException" + unfe);
-                throw new UserNotFoundException("Invalid username or password");
+                
             }
             catch (Exception e)
             {

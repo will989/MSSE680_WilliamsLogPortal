@@ -61,6 +61,7 @@
     <Content Include="AdminPages\UserForm.aspx" />
     <Content Include="CorrelatedMessages.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Images\logo.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="MessageForm.aspx" />
     <Content Include="OrganizationMessages.aspx" />

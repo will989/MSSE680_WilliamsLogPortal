@@ -8,6 +8,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        
+    <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/logo.jpg" />
+        <div>
+            Log Management Portal Login
+        </div>
     <div>
         <div style="BORDER-RIGHT: 2px groove; BORDER-TOP: 2px groove; BORDER-LEFT: 2px groove; WIDTH: 421px; BORDER-BOTTOM: 2px groove; HEIGHT: 184px">
         <br />
