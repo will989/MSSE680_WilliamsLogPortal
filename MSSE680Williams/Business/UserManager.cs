@@ -13,7 +13,6 @@ namespace Business
     {
         public void AddUser(User user)
         {
-
             try
             {
                 //user factory to get service implementations
@@ -38,7 +37,6 @@ namespace Business
             {
                 var userRepo = new DataRepository<User>();
                 userList = userRepo.GetAll().ToList<User>();
-
             }
             catch (Exception e)
             {
@@ -50,7 +48,6 @@ namespace Business
 
         public User GetUser(int userId)
         {
-
             User user = new User();
 
             try
@@ -74,7 +71,6 @@ namespace Business
 
         public User GetUser(string userName)
         {
-
             User user = new User();
 
             try
@@ -98,7 +94,6 @@ namespace Business
 
         public void UpdateUser(User user)
         {
-
             try
             {
                 //user factory to get service implementations
@@ -109,14 +104,12 @@ namespace Business
             {
                 Debug.WriteLine("Exception caught while updating user" + e);
             }
-
         }
 
 
         //a user should really only be inactivated but I will implement this
         public void DeleteUser(User user)
         {
-
             try
             {
                 int userId = user.UserId;
@@ -129,17 +122,14 @@ namespace Business
             {
                 Debug.WriteLine("Exception caught while deleting user" + e);
             }
-
         }
 
         public List<User> GetOrganizationUsers(int orgId)
         {
-
             var userRepo = new DataRepository<User>();
             List<User> orgUsers = userRepo.GetBySpecificKey("OrganizationId", orgId).ToList<User>();
 
             return orgUsers;
         }
-
     }
 }

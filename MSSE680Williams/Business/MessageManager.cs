@@ -13,7 +13,6 @@ namespace Business
 {
     public class MessageManager
     {
-
         public void AddMessage(Message message)
         {
             //user factory to get message service
@@ -93,14 +92,13 @@ namespace Business
         {
             //use factory to get service implementations
             var messageSvc = Factory.GetMessageSvc();
-            
+
             List<Message> msgList = new List<Message>();
 
 
             try
             {
                 msgList = messageSvc.GetAllMessages() as List<Message>;
-
             }
             catch (Exception e)
             {
@@ -115,10 +113,10 @@ namespace Business
             var messageSvc = Factory.GetMessageSvc();
             DataSet ds = new DataSet("Table");
 
-           ds = messageSvc.GetAllMessagesAsDataSet();
+            ds = messageSvc.GetAllMessagesAsDataSet();
             return ds;
         }
-  }
     }
+}
 
 

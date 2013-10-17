@@ -29,7 +29,6 @@ namespace Business
 
         public Organization GetOrganization(int organizationId)
         {
-
             Organization organization = new Organization();
 
             try
@@ -62,7 +61,6 @@ namespace Business
             {
                 var orgRepo = new DataRepository<Organization>();
                 orgList = orgRepo.GetAll().ToList<Organization>();
-
             }
             catch (Exception e)
             {
@@ -74,7 +72,6 @@ namespace Business
 
         public void UpdateOrganization(Organization organization)
         {
-
             try
             {
                 //user factory to get service implementations
@@ -85,12 +82,10 @@ namespace Business
             {
                 Debug.WriteLine("Exception caught while updating organization" + e);
             }
-
         }
 
         public void DeleteOrganization(Organization organization)
         {
-
             try
             {
                 //user factory to get service implementations
@@ -117,9 +112,7 @@ namespace Business
             {
                 Debug.WriteLine("Exception caught while deleting organization" + e);
             }
-
         }
-
     }
 }
 

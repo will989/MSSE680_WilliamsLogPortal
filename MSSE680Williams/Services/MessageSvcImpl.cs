@@ -10,7 +10,6 @@ namespace Services
 {
     public class MessageSvcImpl : IMessageService
     {
-
         // Factory not working with repositories, use RepositoryFactory
         public void AddMessage(Message message)
         {
@@ -46,8 +45,6 @@ namespace Services
                 {
                     throw new MessageNotFoundException("Message not found!");
                 }
-
-
             }
 
             catch (OrganizationNotFoundException onfe)
@@ -60,7 +57,6 @@ namespace Services
             }
 
             return message;
-
         }
 
         public void UpdateMessage(Message message)
@@ -85,7 +81,6 @@ namespace Services
             List<Message> myMsgs = msgRepo.GetBySpecificKey("SendingOrgId", organizationId).ToList<Message>();
 
             return myMsgs;
-
         }
 
         public List<Message> GetCorrelatedMessages(int correlationId)
@@ -96,7 +91,6 @@ namespace Services
             List<Message> myMsgs = msgRepo.GetBySpecificKey("CorrelationIdentifier", correlationId).ToList<Message>();
 
             return myMsgs;
-
         }
 
         public ICollection<Message> GetAllMessages()
@@ -110,7 +104,6 @@ namespace Services
             {
                 var msgRepo = new DataRepository<Message>();
                 msgList = msgRepo.GetAll().ToList<Message>();
-
             }
             catch (Exception e)
             {
@@ -120,50 +113,54 @@ namespace Services
             return msgList;
         }
 
-    // From:  http://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.filterexpression.aspx
-    // To support basic filtering, the messages cannot 
-    // be returned as an array of objects, they need to be
-    // returned as a DataSet of the raw data values.  
-    public DataSet GetAllMessagesAsDataSet ()
-    {
+        // From:  http://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.filterexpression.aspx
+        // To support basic filtering, the messages cannot 
+        // be returned as an array of objects, they need to be
+        // returned as a DataSet of the raw data values.  
+        public DataSet GetAllMessagesAsDataSet()
+        {
+            ICollection<Message> messages = GetAllMessages();
 
-        ICollection<Message> messages = GetAllMessages();
+            var ds = new DataSet("Table");
 
-      var ds = new DataSet("Table");
+            // Create the schema of the DataTable.
+            DataTable dt = new DataTable();
+            DataColumn dc;
+            dc = new DataColumn("MessageId", typeof (int));
+            dt.Columns.Add(dc);
+            dc = new DataColumn("CorrelationIdentifier", typeof (int));
+            dt.Columns.Add(dc);
+            dc = new DataColumn("SendingOrgId", typeof (int));
+            dt.Columns.Add(dc);
+            dc = new DataColumn("ReceivingOrgId", typeof (int));
+            dt.Columns.Add(dc);
+            dc = new DataColumn("Severity", typeof (int));
+            dt.Columns.Add(dc);
+            dc = new DataColumn("OrgMessage", typeof (string));
+            dt.Columns.Add(dc);
+            dc = new DataColumn("Timestamp", typeof (DateTime));
+            dt.Columns.Add(dc);
 
-      // Create the schema of the DataTable.
-      DataTable dt = new DataTable();
-      DataColumn dc;
-      dc = new DataColumn("MessageId",   typeof(int));    dt.Columns.Add(dc);
-      dc = new DataColumn("CorrelationIdentifier",typeof(int)); dt.Columns.Add(dc);
-      dc = new DataColumn("SendingOrgId", typeof(int)); dt.Columns.Add(dc);
-      dc = new DataColumn("ReceivingOrgId", typeof(int)); dt.Columns.Add(dc);
-      dc = new DataColumn("Severity", typeof(int)); dt.Columns.Add(dc);
-      dc = new DataColumn("OrgMessage", typeof(string)); dt.Columns.Add(dc);
-      dc = new DataColumn("Timestamp", typeof(DateTime)); dt.Columns.Add(dc);
+            // Add rows to the DataTable.
+            DataRow row;
 
-      // Add rows to the DataTable.
-      DataRow row;
+            //Loop through all the messages
+            foreach (Message message in messages)
+            {
+                row = dt.NewRow();
+                row["MessageId"] = message.MessageId;
+                row["CorrelationIdentifier"] = message.CorrelationIdentifier;
+                row["SendingOrgId"] = message.SendingOrgId;
+                row["ReceivingOrgId"] = message.ReceivingOrgId;
+                row["Severity"] = message.Severity;
+                row["OrgMessage"] = message.OrgMessage;
+                row["Timestamp"] = message.Timestamp;
+                dt.Rows.Add(row);
+            }
+            // Add the complete DataTable to the DataSet.
+            ds.Tables.Add(dt);
 
-      //Loop through all the messages
-      foreach (Message message in messages) {                
-        row = dt.NewRow();
-        row["MessageId"] = message.MessageId;
-        row["CorrelationIdentifier"] = message.CorrelationIdentifier;
-        row["SendingOrgId"] = message.SendingOrgId;
-        row["ReceivingOrgId"] = message.ReceivingOrgId;
-        row["Severity"] = message.Severity;
-        row["OrgMessage"] = message.OrgMessage;
-        row["Timestamp"] = message.Timestamp;
-        dt.Rows.Add(row);
-      } 
-      // Add the complete DataTable to the DataSet.
-      ds.Tables.Add(dt);
-
-      return ds;
-    }  
- 
-
-
+            return ds;
+        }
     }
 }

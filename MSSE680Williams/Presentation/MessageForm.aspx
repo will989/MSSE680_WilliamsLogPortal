@@ -3,21 +3,19 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
+    <head id="Head1" runat="server">
         <title>Manage Messages</title>
         <style type="text/css">
             .auto-style1 {
                 height: 19px;
                 width: 516px;
             }
-            .auto-style2 {
-                width: 516px;
-            }
-            .auto-style3 {
-                height: 23px;
-            }
+
+            .auto-style2 { width: 516px; }
+
+            .auto-style3 { height: 23px; }
         </style>
-        </head>
+    </head>
     <body>
         <form id="form1" runat="server">
             <div>
@@ -52,12 +50,12 @@
                         <td class="auto-style3">Severity
                         </td>
                         <td>
-                <asp:ListBox ID="SeverityList0" runat="server" AutoPostBack="False" Height="88px" OnSelectedIndexChanged="SeverityList_SelectedIndexChanged">
-                    <asp:ListItem>1</asp:ListItem>
-                    <asp:ListItem>2</asp:ListItem>
-                    <asp:ListItem>3</asp:ListItem>
-                    <asp:ListItem>4</asp:ListItem>
-                    <asp:ListItem>5</asp:ListItem>
+                            <asp:ListBox ID="SeverityList0" runat="server" AutoPostBack="False" Height="88px" OnSelectedIndexChanged="SeverityList_SelectedIndexChanged">
+                                <asp:ListItem>1</asp:ListItem>
+                                <asp:ListItem>2</asp:ListItem>
+                                <asp:ListItem>3</asp:ListItem>
+                                <asp:ListItem>4</asp:ListItem>
+                                <asp:ListItem>5</asp:ListItem>
                             </asp:ListBox>
                 
                         </td>
@@ -93,7 +91,7 @@
             <p>
                 List of Messages:</p>
             <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="ObjectDataSource2" onselectedindexchanging="GridView1_SelectedIndexChanging"
->
+                >
                 <Columns>
                     <asp:CommandField ShowSelectButton="True" />
                     <asp:BoundField DataField="MessageId" HeaderText="MessageId" SortExpression="MessageId" />
@@ -113,28 +111,28 @@
             View Messages for a single Organization:<br />
             <br />
         
-                <table style="height: 278px; width: 524px">
-                    <tr>
-                        <td class="auto-style1"> 
-                            &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style2">
-                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="OrganizationMessages.aspx">View User's Organization Messages</asp:HyperLink>
-                        </td>
-                    </tr>   
-                    <tr>
-                        <td class="auto-style2">
-                            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style2">
-                            &nbsp;</td>
-                    </tr>
+            <table style="height: 278px; width: 524px">
+                <tr>
+                    <td class="auto-style1"> 
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style2">
+                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="OrganizationMessages.aspx">View User's Organization Messages</asp:HyperLink>
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="auto-style2">
+                        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2">
+                        &nbsp;</td>
+                </tr>
            
 
-                </table>
+            </table>
         
             <p>
                 Filter Messages by Severity:</p>
@@ -153,15 +151,15 @@
             <p>
                 <br/>
                 
-             </p>
+            </p>
             <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" SelectMethod="GetAllMessagesAsDataSet"
-                TypeName="Business.MessageManager"
-                FilterExpression="Severity='{0}'" OnFiltering="ObjectDataSource3_Filtering">
+                                  TypeName="Business.MessageManager"
+                                  FilterExpression="Severity='{0}'" OnFiltering="ObjectDataSource3_Filtering">
                
-            <filterparameters>
+                <filterparameters>
 
-                <asp:ControlParameter ControlID="SeverityList" Name ="Severity" PropertyName="SelectedValue"/>
-            </filterparameters></asp:ObjectDataSource>
+                    <asp:ControlParameter ControlID="SeverityList" Name ="Severity" PropertyName="SelectedValue"/>
+                </filterparameters></asp:ObjectDataSource>
             
             <asp:GridView ID="GridView2" runat="server" AllowSorting="True" DataSourceID="ObjectDataSource3">
             </asp:GridView>

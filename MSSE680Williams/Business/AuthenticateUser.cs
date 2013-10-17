@@ -46,7 +46,6 @@ namespace Business
             catch (UserNotFoundException unfe)
             {
                 Debug.WriteLine("Caught UserNotFoundException" + unfe);
-                
             }
             catch (Exception e)
             {

@@ -30,7 +30,8 @@ namespace Services
 
 
                 //return an organization
-                List<Organization> myOrgs = organizationRepository.GetBySpecificKey("OrganizationId", id).ToList<Organization>();
+                List<Organization> myOrgs =
+                    organizationRepository.GetBySpecificKey("OrganizationId", id).ToList<Organization>();
 
                 //should only be one, but just get the first record
                 organization = myOrgs[0];
@@ -39,9 +40,6 @@ namespace Services
                 {
                     throw new OrganizationNotFoundException("Organization not found!");
                 }
-
-
-
             }
             catch (OrganizationNotFoundException onfe)
             {
@@ -74,13 +72,10 @@ namespace Services
 
         List<Organization> IOrganizationService.GetAllOrganizations()
         {
-
             var orgRepo = new DataRepository<Organization>();
             List<Organization> orgList = orgRepo.GetAll().ToList<Organization>();
 
             return orgList;
-
         }
     }
-
 }
