@@ -57,17 +57,26 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddMessage.aspx" />
     <Content Include="AdminPages\OrganizationForm.aspx" />
     <Content Include="AdminPages\UserForm.aspx" />
     <Content Include="CorrelatedMessages.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Images\logo.jpg" />
     <Content Include="Login.aspx" />
+    <Content Include="MessageFilter.aspx" />
     <Content Include="MessageForm.aspx" />
     <Content Include="OrganizationMessages.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddMessage.aspx.cs">
+      <DependentUpon>AddMessage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddMessage.aspx.designer.cs">
+      <DependentUpon>AddMessage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminPages\OrganizationForm.aspx.cs">
       <DependentUpon>OrganizationForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -102,6 +111,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MessageFilter.aspx.cs">
+      <DependentUpon>MessageFilter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MessageFilter.aspx.designer.cs">
+      <DependentUpon>MessageFilter.aspx</DependentUpon>
     </Compile>
     <Compile Include="MessageForm.aspx.cs">
       <DependentUpon>MessageForm.aspx</DependentUpon>

@@ -7,90 +7,35 @@
         <title>Manage Messages</title>
         <style type="text/css">
             .auto-style1 {
-                height: 19px;
-                width: 516px;
+                text-align: center;
             }
-
-            .auto-style2 { width: 516px; }
-
-            .auto-style3 { height: 23px; }
         </style>
     </head>
     <body>
         <form id="form1" runat="server">
             <div>
-        
-                <table style="height: 278px; width: 524px">
-                    <tr>
-                        <td>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CorrelationId" Display="Dynamic" ErrorMessage="Correlation Id is required.">*</asp:RequiredFieldValidator>
-                            Correlation Identifier</td>
-                        <td><asp:TextBox ID="CorrelationId" runat="server"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="CorrelationId" Display="Dynamic" ErrorMessage="Correlation Id must be an integer" ValidationExpression="\d+">Must be an integer.</asp:RegularExpressionValidator>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Sending Organization Id</td>
-                    </tr>
-                    <tr>
-                        <td> 
-                            <asp:ListBox ID="ListBox1" runat="server" DataSourceID="ObjectDataSource1" DataTextField="Name" DataValueField="OrganizationId"></asp:ListBox>
-                
-                        </td>
-                    </tr>   
-                    <tr>
-                        <td class="auto-style3">Receiving Organization Id</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:ListBox ID="ListBox2" runat="server" DataSourceID="ObjectDataSource1" DataTextField="Name" DataValueField="OrganizationId"></asp:ListBox>   
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style3">Severity
-                        </td>
-                        <td>
-                            <asp:ListBox ID="SeverityList0" runat="server" AutoPostBack="False" Height="88px" OnSelectedIndexChanged="SeverityList_SelectedIndexChanged">
-                                <asp:ListItem>1</asp:ListItem>
-                                <asp:ListItem>2</asp:ListItem>
-                                <asp:ListItem>3</asp:ListItem>
-                                <asp:ListItem>4</asp:ListItem>
-                                <asp:ListItem>5</asp:ListItem>
-                            </asp:ListBox>
-                
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Organization Message</td>
-                        <td><asp:TextBox ID="Message" runat="server" ></asp:TextBox></td>
-                    </tr>
-                    <tr>
-                        <td>TimeStamp</td>
-                        <td>(This is auto-assigned when Add Message is clicked)</td>
-                    </tr>
-           
-
-                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetAllOrganizations" TypeName="Business.OrganizationManager"></asp:ObjectDataSource>
-           
-
-                </table>
-        
-                <br/>
+                <h1 class="auto-style1">Message Management Form<br/>
+                </h1>
             </div>
+            <p class="auto-style1">
+        
+            <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/AddMessage.aspx">Add New Message</asp:HyperLink>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="OrganizationMessages.aspx">View User's Organization Messages</asp:HyperLink>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/MessageFilter.aspx">Filter Messages by Severity</asp:HyperLink>
+                    </p>
             <p>
         
-                <asp:Button ID="Button1" runat="server" Text="Add Message" OnClick="Button1_Click" />
-            </p>
-            
             <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-            <p>
-                &nbsp;</p>
-            <p>
+            &nbsp;</p>
                 <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="GetAllMessages" TypeName="Business.MessageManager"></asp:ObjectDataSource>
-            </p>
             <p>
                 List of Messages:</p>
-            <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="ObjectDataSource2" onselectedindexchanging="GridView1_SelectedIndexChanging"
+            <br />
+            Select a row to view a list of messages with the same
+            correlation id (the list of correlated messages):<br />
+&nbsp;<asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="ObjectDataSource2" onselectedindexchanging="GridView1_SelectedIndexChanging"
                 >
                 <Columns>
                     <asp:CommandField ShowSelectButton="True" />
@@ -105,64 +50,29 @@
             </asp:GridView>
 
             <br />
+            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/AddMessage.aspx">Add New Message</asp:HyperLink>
             <br />
             <br />
-            <br />
-            View Messages for a single Organization:<br />
+            View Messages for a user&#39;s Organization:&nbsp;&nbsp;&nbsp;
+                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="OrganizationMessages.aspx">View User's Organization Messages</asp:HyperLink>
+                    <br />
             <br />
         
-            <table style="height: 278px; width: 524px">
                 <tr>
-                    <td class="auto-style1"> 
-                        &nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style2">
-                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="OrganizationMessages.aspx">View User's Organization Messages</asp:HyperLink>
-                    </td>
-                </tr>   
-                <tr>
-                    <td class="auto-style2">
+                    <td class="auto-style3">
                         <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style2">
-                        &nbsp;</td>
+                    </td>
                 </tr>
-           
-
-            </table>
+  
         
             <p>
-                Filter Messages by Severity:</p>
-            <p>
-                <asp:ObjectDataSource ID="ObjectDataSource4" runat="server" SelectMethod="GetAllMessages" TypeName="Business.MessageManager"></asp:ObjectDataSource>
-                <br/>
-                <asp:ListBox ID="SeverityList" runat="server" AutoPostBack="True" Height="88px" OnSelectedIndexChanged="SeverityList_SelectedIndexChanged">
-                    <asp:ListItem>1</asp:ListItem>
-                    <asp:ListItem>2</asp:ListItem>
-                    <asp:ListItem>3</asp:ListItem>
-                    <asp:ListItem>4</asp:ListItem>
-                    <asp:ListItem>5</asp:ListItem>
-                </asp:ListBox>
-                
-            </p>
-            <p>
-                <br/>
-                
-            </p>
-            <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" SelectMethod="GetAllMessagesAsDataSet"
-                                  TypeName="Business.MessageManager"
-                                  FilterExpression="Severity='{0}'" OnFiltering="ObjectDataSource3_Filtering">
-               
-                <filterparameters>
-
-                    <asp:ControlParameter ControlID="SeverityList" Name ="Severity" PropertyName="SelectedValue"/>
-                </filterparameters></asp:ObjectDataSource>
-            
-            <asp:GridView ID="GridView2" runat="server" AllowSorting="True" DataSourceID="ObjectDataSource3">
-            </asp:GridView>
+                        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/MessageFilter.aspx">Filter Messages by Severity</asp:HyperLink>
+                    </p>
+  
         
         </form>
     </body>
