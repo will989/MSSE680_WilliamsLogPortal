@@ -43,7 +43,8 @@ namespace Presentation
             message.ReceivingOrgId = Convert.ToInt32(ListBox2.SelectedValue); //!= null ? this.ListBox2.Text : this.ReceivingOrgId.Text);
 
             //message.ReceivingOrgId = Convert.ToInt32(this.ReceivingOrgId.Text);
-            message.Severity = Convert.ToInt32(this.Severity.Text);
+            //message.Severity = Convert.ToInt32(this.Severity.Text);
+            message.Severity = Convert.ToInt32(SeverityList0.SelectedValue);
             message.OrgMessage = this.Message.Text;
 
             //Set the timestamp automatically
@@ -115,11 +116,17 @@ namespace Presentation
         
         protected void ObjectDataSource3_Filtering(object sender, ObjectDataSourceFilteringEventArgs e)
         {
-            if (SeverityList.Text == "")
+           /* if (SeverityList.Text == "")
             {
                 e.ParameterValues.Clear();
                 e.ParameterValues.Add("Severity", "3");
             }
+            */
+        }
+
+        protected void SeverityList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
         
     }

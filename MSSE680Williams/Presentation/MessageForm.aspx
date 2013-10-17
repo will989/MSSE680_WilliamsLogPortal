@@ -49,9 +49,18 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Severity
+                        <td class="auto-style3">Severity
                         </td>
-                        <td><asp:TextBox ID="Severity" runat="server" ></asp:TextBox></td>
+                        <td>
+                <asp:ListBox ID="SeverityList0" runat="server" AutoPostBack="False" Height="88px" OnSelectedIndexChanged="SeverityList_SelectedIndexChanged">
+                    <asp:ListItem>1</asp:ListItem>
+                    <asp:ListItem>2</asp:ListItem>
+                    <asp:ListItem>3</asp:ListItem>
+                    <asp:ListItem>4</asp:ListItem>
+                    <asp:ListItem>5</asp:ListItem>
+                            </asp:ListBox>
+                
+                        </td>
                     </tr>
                     <tr>
                         <td>Organization Message</td>
@@ -74,6 +83,8 @@
         
                 <asp:Button ID="Button1" runat="server" Text="Add Message" OnClick="Button1_Click" />
             </p>
+            
+            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
             <p>
                 &nbsp;</p>
             <p>
@@ -130,21 +141,26 @@
             <p>
                 <asp:ObjectDataSource ID="ObjectDataSource4" runat="server" SelectMethod="GetAllMessages" TypeName="Business.MessageManager"></asp:ObjectDataSource>
                 <br/>
-                <asp:ListBox ID="SeverityList" runat="server" AutoPostBack="True" DataSourceID="ObjectDataSource4" DataTextField="Severity" DataValueField="Severity"></asp:ListBox>
+                <asp:ListBox ID="SeverityList" runat="server" AutoPostBack="True" Height="88px" OnSelectedIndexChanged="SeverityList_SelectedIndexChanged">
+                    <asp:ListItem>1</asp:ListItem>
+                    <asp:ListItem>2</asp:ListItem>
+                    <asp:ListItem>3</asp:ListItem>
+                    <asp:ListItem>4</asp:ListItem>
+                    <asp:ListItem>5</asp:ListItem>
+                </asp:ListBox>
                 
             </p>
             <p>
                 <br/>
                 
-                <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-                
-            </p>
+             </p>
             <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" SelectMethod="GetAllMessagesAsDataSet"
                 TypeName="Business.MessageManager"
                 FilterExpression="Severity='{0}'" OnFiltering="ObjectDataSource3_Filtering">
                
             <filterparameters>
-              <asp:formparameter name="Severity" formfield="SeverityList" defaultvalue="3" />
+
+                <asp:ControlParameter ControlID="SeverityList" Name ="Severity" PropertyName="SelectedValue"/>
             </filterparameters></asp:ObjectDataSource>
             
             <asp:GridView ID="GridView2" runat="server" AllowSorting="True" DataSourceID="ObjectDataSource3">
