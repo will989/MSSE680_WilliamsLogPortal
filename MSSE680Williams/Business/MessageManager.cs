@@ -89,17 +89,17 @@ namespace Business
             return correlatedMessages;
         }
 
-        public static List<Message> GetAllMessages()
+        public ICollection<Message> GetAllMessages()
         {
             //use factory to get service implementations
             var messageSvc = Factory.GetMessageSvc();
+            
             List<Message> msgList = new List<Message>();
 
 
             try
             {
-                var msgRepo = new DataRepository<Message>();
-                msgList = msgRepo.GetAll().ToList<Message>();
+                msgList = messageSvc.GetAllMessages() as List<Message>;
 
             }
             catch (Exception e)
@@ -109,43 +109,15 @@ namespace Business
 
             return msgList;
         }
-/*
-    // To support basic filtering, the messages cannot 
-    // be returned as an array of objects, they need to be
-    // returned as a  
-    // DataSet of the raw data values.  
-    public static DataSet GetAllMessagesAsDataSet () {
-      
-        foreach (var allMessage in (ICollection)GetAllMessages())
+
+        public DataSet GetAllMessagesAsDataSet()
         {
-            
+            var messageSvc = Factory.GetMessageSvc();
+            DataSet ds = new DataSet("Table");
+
+           ds = messageSvc.GetAllMessagesAsDataSet();
+            return ds;
         }
-
-      var ds = new DataSet("Table");
-
-      // Create the schema of the DataTable.
-      DataTable dt = new DataTable();
-      DataColumn dc;
-      dc = new DataColumn("EmpID",   typeof(int));    dt.Columns.Add(dc);
-      dc = new DataColumn("FullName",typeof(string)); dt.Columns.Add(dc);
-      dc = new DataColumn("Address", typeof(string)); dt.Columns.Add(dc);
-
-      // Add rows to the DataTable.
-      DataRow row;
-
-      foreach (NorthwindEmployee ne in employees) {                
-        row = dt.NewRow();
-        row["EmpID"]    = ne.EmpID;
-        row["FullName"] = ne.FullName;
-        row["Address"]  = ne.Address;
-        dt.Rows.Add(row);
-      } 
-      // Add the complete DataTable to the DataSet.
-      ds.Tables.Add(dt);
-
-      return ds;
-    }  
- */
   }
     }
 

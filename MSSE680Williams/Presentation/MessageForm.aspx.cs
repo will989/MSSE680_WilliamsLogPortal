@@ -106,15 +106,21 @@ namespace Presentation
             }
         }
         */
-
-        protected void ObjectDataSource1_Filtering(object sender, ObjectDataSourceFilteringEventArgs e)
+        //adding for debug purposes - should show value of listbox
+        protected void SeverityList_OnChange(object sender, EventArgs e)
         {
-            if (Textbox1.Text == "")
+            string s = ("SeverityList.Text = " + Convert.ToInt32(this.SeverityList.Text));
+            Label1.Text = s;
+        }
+        
+        protected void ObjectDataSource3_Filtering(object sender, ObjectDataSourceFilteringEventArgs e)
+        {
+            if (SeverityList.Text == "")
             {
                 e.ParameterValues.Clear();
-                e.ParameterValues.Add("Severity", "1");
+                e.ParameterValues.Add("Severity", "3");
             }
         }
-
+        
     }
 }

@@ -12,6 +12,8 @@ namespace Services
         void DeleteMessage(Message message);
         List<Message> GetOrganizationMessages(int organizationId);
         List<Message> GetCorrelatedMessages(int correlationId);
+        DataSet GetAllMessagesAsDataSet();
+        ICollection<Message> GetAllMessages();
     }
 }
 
